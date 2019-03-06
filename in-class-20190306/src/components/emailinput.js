@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 const EmailInput = (props) => {
   const onEmailChange = (event) => { 
     var email = event.target.value;
@@ -10,13 +10,13 @@ return (
     <div className="form-group">
     <label htmlFor="exampleInputEmail1">Email address</label>
     <input
-    aria-describedby="emailHelp"
-    className="form-control"
-    id="exampleinputemail1"
-    onchange={onEmailChange}
-    placeholder="Enter Email"
-    type="email"
-    value={this.state.email} 
+      aria-describedby="emailHelp"
+      className="form-control"
+      id="exampleinputemail1"
+      onchange={onEmailChange}
+      placeholder="Enter Email"
+      type="email"
+      value={this.state.email} 
     />
   </div>
 );
