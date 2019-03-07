@@ -3,7 +3,7 @@ const EmailInput = (props) => {
   
  var EmailInputChange = (event) => {
   var Email = event.value; 
-  this.props.onEmailInputChange(Email);
+  props.onEmailInputChange(Email);
  }
   return (
     <div>
