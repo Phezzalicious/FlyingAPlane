@@ -13,10 +13,10 @@ return (
     aria-describedby="passwordHelp"
     className="form-control"
     id="exampleinputpassword1"
-    onchange={onPasswordChange}
+    onChange={onPasswordChange}
     placeholder="Enter Password"
     type="password"
-    value={this.state.password} 
+    value={props.password} 
     />
   </div>
 );

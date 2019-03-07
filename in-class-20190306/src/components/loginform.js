@@ -1,6 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import EmailInput from './emailinput'
 import PasswordInput from './passwordinput'
+import Button from './submitbutton'
+import { Errors } from './errors'
 
 class LoginForm extends Component {
     constructor(props) {
@@ -11,8 +13,8 @@ class LoginForm extends Component {
             formErrors: { email: '', password: '' },
             emailValid: false,
             passwordValid: false,
-            formValid: false, 
-            linkVars: {path: '/Mapbox', var: ''}
+            formValid: false,
+            linkVars: { path: '/Mapbox', var: '' }
         }
     }
 
@@ -51,25 +53,34 @@ class LoginForm extends Component {
     //if all is well sets true foreach: (in effect, will enable submit button)
     validateForm() {
         this.setState({ formValid: this.state.emailValid && this.state.passwordValid });
-        this.setState({email: this.state.email})
-        this.props.usrEmail(this.state.email)
+        this.setState({ email: this.state.email })
+       
     }
 
     errorClass(error) {
         return (error.length === 0 ? '' : 'has-error');
     }
     
-    handleSubmission = (e) => {
-        e.preventDefault();  
-        let validEmail = this.state.emailValid.value;
-        this.props.usrEmail(validEmail)
-    }
-
     render() {
+        const btn ={
+            btnStyle: 'btn btn-primary'
+        };
         return (
-            <form onSubmit={this.handleSubmission}>
-                <EmailInput onEmailInputChange={this.handleSubmission}/>
-                <PasswordInput onPasswordInputChange={this.handleSubmission}/>
+            <form>
+                <h2>Sign Up!</h2>
+                <div className="container">
+                    <Errors formErrors={this.state.formErrors} />
+                </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
+                    <EmailInput onEmailInputChange={this.handleUserInput} />
+                </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
+                    <PasswordInput onPasswordInputChange={this.state.handleUserInput} />
+                </div>
+                <div className="containter">
+                <Button className={btn}>Submit</Button>
+                </div>
+
             </form>
         )
     }
