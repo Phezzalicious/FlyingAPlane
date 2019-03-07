@@ -72,15 +72,15 @@ class LoginForm extends Component {
                     <Errors formErrors={this.state.formErrors} />
                 </div>
                 <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                    <EmailInput onEmailInputChange={this.handleUserInput} />
+                    <EmailInput onEmailInputChange={this.handleUserInput}  value={this.state.email}/>
                 </div>
                 <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                    <PasswordInput onPasswordInputChange={this.state.handleUserInput} />
+                    <PasswordInput onPasswordInputChange={this.handleUserInput} value={this.state.password}/>
                 </div>
                 <div className="containter">
                 <Button className={btn}>Submit</Button>
                 </div>
-
+                <p>Submitted: {this.state.email}</p>
             </form>
         )
     }
